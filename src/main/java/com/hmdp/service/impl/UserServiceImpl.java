@@ -136,9 +136,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         //7.保存用户信息到redis中
         //7.1随机生成token，作为登录令牌
         String token = UUID.randomUUID().toString();
-        // TODO 7.2将User对象转为Hash格式存储
+        // 7.2将User对象转为Hash格式存储
         UserDTO userDTO = BeanUtil.copyProperties(user, UserDTO.class);
-        // stringRedisTemplate要求所有数据均为string，而userDTO中的id为Long
+        // TODO stringRedisTemplate要求所有数据均为string，而userDTO中的id为Long(不是特别明白)
         Map<String, Object> userMap = BeanUtil.beanToMap(userDTO, new HashMap<>(),
                 CopyOptions.create()
                         .setIgnoreNullValue(true)
