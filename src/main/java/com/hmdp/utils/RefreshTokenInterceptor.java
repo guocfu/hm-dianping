@@ -15,8 +15,8 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class RefreshTokenInterceptor implements HandlerInterceptor {
 
-    // 因为LoginInterceptor不是由容器创建，而是由MvcConfig手动创建的，因此不能用@AutoWired自动注入变量
-    // 可以由MvcConfig自动注入，在创建LoginInterceptor时使用构造函数
+    // 因为RefreshTokenInterceptor??不是由容器创建，而是由MvcConfig手动创建的，因此不能用@AutoWired自动注入变量
+    // 可以由MvcConfig自动注入，在创建RefreshTokenInterceptor时使用构造函数
     private StringRedisTemplate stringRedisTemplate;
 
     public RefreshTokenInterceptor(StringRedisTemplate stringRedisTemplate) {
