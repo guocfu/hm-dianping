@@ -72,7 +72,7 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
         // }
 
         // 使用Redis锁解决集群并发安全问题
-        SimpleRedisLock lock = new SimpleRedisLock("", stringRedisTemplate);
+        SimpleRedisLock lock = new SimpleRedisLock("order:"+userId, stringRedisTemplate);
         boolean isLock = lock.tryLock(1200); // 一般设置成2s，为了方便调试设的长一点
         if(!isLock){
             return Result.fail("不允许重复下单！");
